@@ -90,7 +90,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="4K4-xS-Uuv" kind="push" identifier="updateToDoViewController" id="pHf-vA-tv6"/>
+                        <segue destination="4K4-xS-Uuv" kind="push" identifier="updateToDoViewController" id="CqM-tW-h0K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpJ-r0-zZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +100,7 @@
         <!--Update To Do View Controller-->
         <scene sceneID="xqn-Qi-RKm">
             <objects>
-                <viewController id="4K4-xS-Uuv" customClass="UpdateToDoViewController" customModule="Done" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updateToDoViewController" id="4K4-xS-Uuv" customClass="UpdateToDoViewController" customModule="Done" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ybM-Vu-dM5"/>
                         <viewControllerLayoutGuide type="bottom" id="1XD-jy-SAD"/>
@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cet-Oa-fdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2253" y="1100"/>
+            <point key="canvasLocation" x="1824" y="1100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Du8-Cl-td3">

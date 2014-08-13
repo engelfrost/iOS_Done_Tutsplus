@@ -80,6 +80,9 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         
         // Store Selection
         self.selection = indexPath
+        
+        // Perform Segue
+        self.performSegueWithIdentifier("updateToDoViewController", sender: self)
     }
     
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
