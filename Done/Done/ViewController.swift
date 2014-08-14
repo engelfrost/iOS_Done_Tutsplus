@@ -33,6 +33,8 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         // Perform Fetch
         var error: NSErrorPointer = NSErrorPointer()
         self.fetchedResultsController.performFetch(error)
+        
+        //self.tableView.registerClass(ToDoCell.classForCoder(), forCellReuseIdentifier: "ToDoCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,7 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         switch (type) {
         case NSFetchedResultsChangeType.Insert: self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         case NSFetchedResultsChangeType.Delete: self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        case NSFetchedResultsChangeType.Update: self.configureCell(self.tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+        case NSFetchedResultsChangeType.Update: self.configureCell(self.tableView.cellForRowAtIndexPath(indexPath) as ToDoCell, atIndexPath: indexPath)
         case NSFetchedResultsChangeType.Move:   self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
                                                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
@@ -69,10 +71,16 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as UITableViewCell
-        self.configureCell(cell, atIndexPath: indexPath)
+        var cell: ToDoCell = self.tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as ToDoCell
+        
+        self.configureCell(cell as ToDoCell, atIndexPath: indexPath)
         
         return cell
+    }
+    
+    //TODO: XCode 6 Beta 5 Bug - Delete when fixed.
+    override func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat {
+        return 44
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
@@ -85,15 +93,25 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         self.performSegueWithIdentifier("updateToDoViewController", sender: self)
     }
     
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = record.valueForKey("name") as String
-        cell.detailTextLabel.text = (record.valueForKey("createdAt") as NSDate).description
-        if (record.valueForKey("done") as Bool) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+            
+            if (record != nil) {
+                self.fetchedResultsController.managedObjectContext.deleteObject(record)
+            }
         }
+    }
+    
+    func configureCell(cell: ToDoCell, atIndexPath indexPath: NSIndexPath) {
+        var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        
+        cell.textField.text = record.valueForKey("name") as String
+        //cell.detailTextLabel.text = (record.valueForKey("createdAt") as NSDate).description
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E46CB4F199D0364002293F3 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E46CB4E199D0364002293F3 /* ToDoCell.swift */; };
 		2E9C69B8199C0BF30063493B /* UpdateToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9C69B7199C0BF30063493B /* UpdateToDoViewController.swift */; };
 		2ED9ABC5199A82A500DAB53A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9ABC4199A82A500DAB53A /* AppDelegate.swift */; };
 		2ED9ABC8199A82A500DAB53A /* Done.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9ABC6199A82A500DAB53A /* Done.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E46CB4E199D0364002293F3 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		2E9C69B7199C0BF30063493B /* UpdateToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateToDoViewController.swift; sourceTree = "<group>"; };
 		2ED9ABBF199A82A500DAB53A /* Done.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Done.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED9ABC3199A82A500DAB53A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				2ED9ABC9199A82A500DAB53A /* ViewController.swift */,
 				2ED9ABE4199A85F400DAB53A /* AddToDoViewController.swift */,
 				2E9C69B7199C0BF30063493B /* UpdateToDoViewController.swift */,
+				2E46CB4E199D0364002293F3 /* ToDoCell.swift */,
 				2ED9ABCB199A82A500DAB53A /* Main.storyboard */,
 				2ED9ABCE199A82A500DAB53A /* Images.xcassets */,
 				2ED9ABC6199A82A500DAB53A /* Done.xcdatamodeld */,
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ED9ABE5199A85F400DAB53A /* AddToDoViewController.swift in Sources */,
+				2E46CB4F199D0364002293F3 /* ToDoCell.swift in Sources */,
 				2ED9ABCA199A82A500DAB53A /* ViewController.swift in Sources */,
 				2E9C69B8199C0BF30063493B /* UpdateToDoViewController.swift in Sources */,
 				2ED9ABC5199A82A500DAB53A /* AppDelegate.swift in Sources */,
