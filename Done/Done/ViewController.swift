@@ -33,8 +33,6 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         // Perform Fetch
         var error: NSErrorPointer = NSErrorPointer()
         self.fetchedResultsController.performFetch(error)
-        
-        //self.tableView.registerClass(ToDoCell.classForCoder(), forCellReuseIdentifier: "ToDoCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +109,12 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         
         cell.textField.text = record.valueForKey("name") as String
-        //cell.detailTextLabel.text = (record.valueForKey("createdAt") as NSDate).description
+        cell.doneButton.selected = record.valueForKey("done") as Bool
+        cell.didTapButtonBlock = {
+            var isDone: Bool = record.valueForKey("done") as Bool
+            record.setValue(!isDone, forKey: "done")
+            println("Changing button value from \(isDone) to \(!isDone)")
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
