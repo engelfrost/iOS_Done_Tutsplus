@@ -24,7 +24,7 @@ class AddToDoViewController: UIViewController, UITextViewDelegate {
         
         if (!name.isEmpty) {
             var entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: self.managedObjectContext)
-            var record: NSManagedObject = NSManagedObject(entity: entity, insertIntoManagedObjectContext: self.managedObjectContext)
+            var record: NSManagedObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
             
             record.setValue(name, forKey: "name")
             record.setValue(NSDate(), forKey: "createdAt")

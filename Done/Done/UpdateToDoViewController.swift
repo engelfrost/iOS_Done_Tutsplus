@@ -16,7 +16,7 @@ class UpdateToDoViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func cancel(sender: AnyObject!) {
-        self.navigationController.popViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func save(sender: AnyObject!) {
@@ -27,7 +27,7 @@ class UpdateToDoViewController: UIViewController {
             
             var error: NSErrorPointer = NSErrorPointer()
             if (self.managedObjectContext.save(error)) {
-                self.navigationController.popViewControllerAnimated(true)
+                self.navigationController?.popViewControllerAnimated(true)
             } else {
                 UIAlertView(title: "Warning", message: "Unable to save changes", delegate: nil, cancelButtonTitle: "OK").show()
             }

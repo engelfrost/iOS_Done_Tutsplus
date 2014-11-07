@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B2C91353-4D12-4C7C-87D8-D5B32B123B43</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>507E5373A0D5B616D14C8F9711F7E51D14D9CF52</key>
+		<string>github.com:muggin/iOS_Done_Tutsplus.git</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>507E5373A0D5B616D14C8F9711F7E51D14D9CF52</key>
+		<string>iOS_Done_Tutsplus/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:muggin/iOS_Done_Tutsplus.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>507E5373A0D5B616D14C8F9711F7E51D14D9CF52</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>507E5373A0D5B616D14C8F9711F7E51D14D9CF52</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS_Done_Tutsplus</string>
+		</dict>
+	</array>
+</dict>
+</plist>

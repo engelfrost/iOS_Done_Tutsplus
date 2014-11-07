@@ -20,8 +20,8 @@ class ToDoCell: UITableViewCell {
     }
     
     func setupView() {
-        var imageNormal: UIImage = UIImage(named: "button-done-normal")
-        var imageSelected: UIImage = UIImage(named: "button-done-selected")
+        var imageNormal: UIImage = UIImage(named: "button-done-normal")!
+        var imageSelected: UIImage = UIImage(named: "button-done-selected")!
         
         self.doneButton.setImage(imageNormal, forState: UIControlState.Normal)
         self.doneButton.setImage(imageNormal, forState: UIControlState.Disabled)

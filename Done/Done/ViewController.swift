@@ -58,17 +58,17 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        return self.fetchedResultsController.sections.count
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return (self.fetchedResultsController.sections?.count)!
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        var sections: NSArray = self.fetchedResultsController.sections
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var sections: NSArray = self.fetchedResultsController.sections!
         var sectionInfo: NSFetchedResultsSectionInfo = sections.objectAtIndex(section) as NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: ToDoCell = self.tableView.dequeueReusableCellWithIdentifier("ToDoCell", forIndexPath: indexPath) as ToDoCell
         
         self.configureCell(cell as ToDoCell, atIndexPath: indexPath)
@@ -77,11 +77,11 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     //TODO: XCode 6 Beta 5 Bug - Delete when fixed.
-    override func tableView(tableView:UITableView!, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat {
+    override func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat {
         return 44
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         // Store Selection
@@ -91,15 +91,13 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         self.performSegueWithIdentifier("updateToDoViewController", sender: self)
     }
     
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-            
-            if (record != nil) {
+            if let record = self.fetchedResultsController.objectAtIndexPath(indexPath) as? NSManagedObject {
                 self.fetchedResultsController.managedObjectContext.deleteObject(record)
             }
         }
@@ -108,7 +106,7 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
     func configureCell(cell: ToDoCell, atIndexPath indexPath: NSIndexPath) {
         var record: NSManagedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         
-        cell.textField.text = record.valueForKey("name") as String
+        cell.textField.text = record.valueForKey("name") as? String
         cell.doneButton.selected = record.valueForKey("done") as Bool
         cell.didTapButtonBlock = {
             var isDone: Bool = record.valueForKey("done") as Bool
@@ -117,7 +115,7 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "addToDoViewController") {
             var nc: UINavigationController = segue.destinationViewController as UINavigationController
             var vc: AddToDoViewController = nc.topViewController as AddToDoViewController
